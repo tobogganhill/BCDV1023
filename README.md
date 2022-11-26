@@ -1,5 +1,6 @@
-# BCDV1023
-Blockchain Integration
+# BCDV1023 - Blockchain Integration
+# ToDo List dApp
+
 
 I suggest you use VS Code to edit the files.
 

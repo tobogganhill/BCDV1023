@@ -1,0 +1,77 @@
+body {
+	background: rgb(63, 70, 75);
+}
+
+.card-container {
+	width: 300px;
+	height: 500px;
+	background: rgb(131, 125, 122);
+	border: 5px solid rgb(224, 89, 11);
+	border-radius: 25px;
+	opacity: 1;
+	margin-right: auto;
+	margin-left: auto;
+	border-left: 0;
+}
+
+.icon-circle {
+	background: white;
+	border: 3px solid rgb(5, 5, 5);
+	border-radius: 90px;
+	height: 20px;
+	font-weight: bold;
+	width: 20px;
+	display: table;
+	margin-top: 12px;
+	margin-left: 31px;
+}
+
+.bloc {
+	margin-top: 12px;
+	margin-left: 28px;
+}
+
+.task-count {
+	margin-top: 10px;
+	margin-left: 31px;
+	font-weight: bold;
+}
+
+.task-card {
+	width: 300px;
+	height: 325px;
+	border: 1px solid #ffffff;
+	background: #ffffff;
+	border-radius: 25px 25px 10px 10px;
+	opacity: 1;
+	position: relative;
+}
+
+.fab {
+	background: white;
+	border-radius: 200px;
+	height: 40px;
+	width: 40px;
+	font-weight: bold;
+	border: 0;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-right: 27px;
+	margin-bottom: 31px;
+}
+
+.add-task-container {
+	top: 150px;
+	width: 300px;
+	height: 187px;
+	background: #ffffff;
+	border-radius: 25px 25px 0px 0px;
+	opacity: 1;
+	position: absolute;
+}
+
+.task-done {
+	color: rgb(95, 91, 91);
+	text-decoration: line-through;
+}

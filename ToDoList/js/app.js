@@ -5,8 +5,8 @@ $('#add-task-container').on('shown.bs.modal', function () {
 	$('#new-task').trigger('focus');
 });
 
-// createTaskList() set the contract object and gets the number of tasks for the user
-// addTaskToList() is called to add them to HTML sequentially, then calls updateTaskCount()
+// Set the contract object and get the number of tasks for the user.
+// addTaskToList() is called to add tasks to HTML sequentially, then calls updateTaskCount().
 async function createTaskList() {
 	// Get account from Ganache
 	try {
@@ -17,7 +17,7 @@ async function createTaskList() {
 			numberOfTask = await contract.methods
 				.getTaskCount()
 				.call({ from: web3.eth.defaultAccount });
-			// The actual number of task may differ because when a task is removed, the task element is	removed and the index value now has nothing.
+			
 			console.log('DEBUG: Number of Tasks: ' + numberOfTask);
 			// If there is at least one task present...
 			if (numberOfTask != 0) {
@@ -75,7 +75,7 @@ function addTaskToList(id, name, status) {
 	checkbox.setAttribute('type', 'checkbox');
 	checkbox.setAttribute('id', 'item-' + id + '-checkbox');
 	checkbox.checked = status;
-	// if status is true then add task-done class to li	element so that the text gets a linethrough
+	// if status is true then add task-done class to li element so that the linethrough displays.
 
 	if (status) {
 		item.classList.add('task-done');
@@ -96,7 +96,7 @@ function addTaskToList(id, name, status) {
 	};
 }
 
-// removeTask() removes the task from blockchain and then from the HTML using JQuery
+// removeTask() removes the task from blockchain and then from the HTML using JQuery.
 // Note: The taskIndex is the li element id {item-taskIndex}
 async function removeTask(taskIndex) {
 	console.log('DEBUG: removeTask(): Remove Task ' + taskIndex);
@@ -118,7 +118,7 @@ async function removeTask(taskIndex) {
 	}
 }
 
-// changeTaskStatus() change the status of task in blockchain and then in the HTML
+// Change the status of task in blockchain.  Display in the HTML.
 // Note: The id is the checkbox id {item-taskIndex-checkbox}
 async function changeTaskStatus(id, taskIndex) {
 	// Get checkbox element
@@ -149,7 +149,7 @@ async function changeTaskStatus(id, taskIndex) {
 	}
 }
 
-// updateTaskCount() update the number of task in HTML by counting the number of item in the ul element
+// Update the number of tasks in HTML by counting the number of item in the ul element
 function updateTasksCount() {
 	// Get the element of ul tag
 	let list = document.getElementById('list');
@@ -161,18 +161,14 @@ function updateTasksCount() {
 	count.innerText = taskCount + ' Tasks';
 }
 
-// addTask() add the task to the HTML via adddTasktoList() and then add it to blockchain and update the count via updateTaskCount()
+// Add the task to the HTML via adddTasktoList(). Then write to blockchain and update the count via updateTaskCount().
 async function addTask(name) {
 	// Get the form element containing the new task
 	let form = document.getElementById('add-task-container');
-	console.log('DEBUG: form: ' + form);
-	// Check if the input is valid, if so then add it
-	// if (form.checkValidity()) {
-	// if (true) {
 	console.log('DEBUG: Retrieve number of tasks from Ganache.');
 	// Set blank value for text in the addtask modal
 	document.getElementById('new-task').value = '';
-	// Remove the mentioned class because it might be present if a task was added before
+	// Remove the class because it might be present if a task was added before
 	form.classList.remove('was-validated');
 	// Get the number of tasks from blockchain
 	contract.methods
@@ -195,7 +191,7 @@ async function addTask(name) {
 		await contract.methods
 			.addTask(name, 0)
 			.send({ from: web3.eth.defaultAccount });
-		console.log('DEBUG: Add task ' + name + ' to blockchain');
+		console.log('DEBUG: Add task ' + name + ' to blockchain.');
 	} catch {
 		console.log('DEBUG: Failed to add task.');
 	}
